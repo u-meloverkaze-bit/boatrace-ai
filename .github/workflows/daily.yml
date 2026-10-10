@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test:
@@ -28,3 +28,12 @@ jobs:
         with:
           name: daily-test-result
           path: results/status.csv
+      - name: Save boat race data
+        uses: actions/upload-artifact@v4
+        with:
+          name: boat-race-data
+          path: data/
+          if-no-files-found: error
+          retention-days: 90
+
+
