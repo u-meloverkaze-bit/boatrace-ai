@@ -29,4 +29,5 @@ jobs:
           path: |
             data/
             results/
+            extracted/
           retention-days: 90
