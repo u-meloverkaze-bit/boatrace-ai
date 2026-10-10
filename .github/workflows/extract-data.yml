@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install extractor
-        run: python -m pip install libarchive-c
+        run: python -m pip install lhafile
       - name: Download and extract
         run: |
           python daily.py
