@@ -1,1 +1,30 @@
+name: Daily Boat Race AI
 
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run daily.py
+        run: python daily.py
+
+      - name: Upload test result
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-test-result
+          path: results/status.csv
