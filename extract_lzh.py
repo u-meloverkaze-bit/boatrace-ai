@@ -19,7 +19,7 @@ for archive in archives:
     target_dir = out / relative.parent / archive.stem
     target_dir.mkdir(parents=True, exist_ok=True)
     try:
-        with lhafile.Lhafile(str(archive)) as lha:
+        lha = lhafile.Lhafile(str(archive))
             names = lha.namelist()
             if not names:
                 raise ValueError('Archive is empty')
